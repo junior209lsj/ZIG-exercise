@@ -135,7 +135,11 @@ const no_type_value = 3232;
 // const no_type_value = 3232.3;
 ```
 
-zig는 불리언 타입도 가지고 있다. 참을 의미하는 값은 `true`, 거짓을 의미하는 값은 `false`이다.
+zig는 불리언 타입 `bool`도 가지고 있다. 참을 의미하는 값은 `true`, 거짓을 의미하는 값은 `false`이다.
+
+```zig
+const flag: bool = false; // true or false
+```
 
 이 섹션에 해당하는 예제 코드 전체는 `02_value.zig`이며 이 소스 파일은 다음과 같은 명령어로 실행한다.
 
