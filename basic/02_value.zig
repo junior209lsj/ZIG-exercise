@@ -1,22 +1,31 @@
 const std = @import("std");
-const print = std.debug.print;
+const stdout = std.io.getStdOut().writer();
 
-/// 리턴타입에 !가 붙으면 오류를 반환할 수 있음을 의미
-/// try stdout.print()에서 오류를 반환할 수 있으므로 !void로 해야되고, void로 하면 에러 뜸
-/// stdout에서 에러 처리 안하면 에러 뜸
 pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
+    // assignment keyword
+    // const: 값을 변경하려고 할 시 컴파일 에러 발생
     const c_value: i32 = 33;
     // c_value = 44; // 에러 발생
+
+    // var: 값을 변경하지 않으면 컴파일 에러 발생 (이 경우 const 사용)
     var v_value: i32 = 33;
     v_value = 44;
-    // var div_value: i32 = 7 / 4; // 이렇게 하면 어떻게 될까?
-    const div_value: i32 = 7 / 4; // 정수 나눗셈
-    const div_f_value: f32 = 7.0 / 4.0;
+
+    // 변수 선언 시 값을 할당하지 않는 경우 undefined 사용
+    var undef_value: i32 = undefined;
+    undef_value = 55;
+
+    // double type
+    const g_acceleration: f64 = 9.80665;
+
+    const no_type_value = 3232;
+    // const no_type_value = 3232.3;
+
+    const flag: bool = false; // true or false
+    _ = flag;
 
     try stdout.print("c_value: type {}, value {}\n", .{ @TypeOf(c_value), c_value });
     try stdout.print("v_value = {}\n", .{v_value});
-    try stdout.print("div_value = {}\n", .{div_value});
-    // try stdout.print("div_f_value = {}\n", .{div_f_value}); // {d}와 {}의 차이
-    try stdout.print("div_f_value = {d}\n", .{div_f_value});
+    try stdout.print("g = {}\n", .{g_acceleration});
+    try stdout.print("no_type_value: type {}, value {}\n", .{ @TypeOf(no_type_value), no_type_value });
 }
